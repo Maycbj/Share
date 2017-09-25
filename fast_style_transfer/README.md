@@ -18,7 +18,7 @@ Our implementation is based off of a combination of Gatys' [A Neural Algorithm o
         <td rowspan="2"><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave.jpg" width=100% height=100%></td>
     </tr>
     <tr>
-       <td rowspan="2"><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave1.jpg" width=100% height=100%></td>
+       <td rowspan="2"><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave1.jpg" width=20% height=20%></td>
     </tr>
 </table>
 
