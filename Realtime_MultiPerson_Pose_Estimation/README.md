@@ -134,54 +134,54 @@
 <table>
     <tr>
         <th>VggNet(baseline)</th>
-        <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/vgg.png" width=100% height=100%></td>
+        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg.png" width=100% height=100%></td>
     </tr>
     <tr>
         <th>MobileNet </th>
-        <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/mobile.png" width=100% height=100%></td>
+        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile.png" width=100% height=100%></td>
     </tr>
     <tr>
         <th>ResNet</th>
-        <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/resnet.png" width=100% height=100%></td>
+        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet.png" width=100% height=100%></td>
     </tr>
 </table>
 
 
 ## 预处理验证:
 (1) VGG: 零均值 + 归一化, 在ImageNet上效果较好。
-![VggNet](https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/vgg1.png)
+![VggNet](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg1.png)
 
 (2) ResNet:减mean_file,不用scale,(归一化则分类错误)分类结果比VGG要好。
-![ResNet](https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/resnet1.png)
+![ResNet](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet1.png)
 
 ## 最终效果比对
 最后200次迭代，同样大小的图片(224*224)
 
 * Loss及耗时比对
 <table>
-	<tr>
-		<th></th>
-		<th>loss</th>
-		<th>耗时(前向传播时间)</th>
-	</tr>
-	<tr>
-		<th>VGG19</th>
-		<td>183</td>
-		<td>26ms</td>
-	</tr>
-		<th>MobileNet</th>
-		<td>199</td>
-		<td>16ms</td>
-	</tr>
-		<th>ResNet</th>
-		<td>182</td>
-		<td>21ms</td>
-	</tr>
-	</tr>
-		<th>最终优化ResNet</th>
-		<td>182</td>
-		<td>17ms</td>
-	</tr>
+    <tr>
+        <th></th>
+        <th>loss</th>
+        <th>耗时(前向传播时间)</th>
+    </tr>
+    <tr>
+        <th>VGG19</th>
+        <td>183</td>
+        <td>26ms</td>
+    </tr>
+        <th>MobileNet</th>
+        <td>199</td>
+        <td>16ms</td>
+    </tr>
+        <th>ResNet</th>
+        <td>182</td>
+        <td>21ms</td>
+    </tr>
+    </tr>
+        <th>最终优化ResNet</th>
+        <td>182</td>
+        <td>17ms</td>
+    </tr>
 </table>
 * 结果图比对
 <table>
@@ -191,19 +191,19 @@
     <th>ResNet</th>
 </tr>
 <tr>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/vgg2.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/mobile2.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/resnet2.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg2.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile2.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet2.png" width=100% height=100%></td>
 </tr>
 <tr>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/vgg3.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/mobile3.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/resnet3.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg3.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile3.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet3.png" width=100% height=100%></td>
 </tr>
 <tr>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/vgg4.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/mobile4.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/resnet4.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg4.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile4.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet4.png" width=100% height=100%></td>
 </tr>
 </table>
 
@@ -214,9 +214,9 @@
  
 * 2、修改mac的ip地址 
 <pre>
-	`cd Share/internship/sina/Realtime_MultiPerson_Pose_Estimation/trans
-	vim receive.py 
-	address = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)`
+    `cd Share/internship/sina/Realtime_MultiPerson_Pose_Estimation/trans
+    vim receive.py 
+    address = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)`
 </pre>
 
 
