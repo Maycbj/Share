@@ -9,20 +9,39 @@ Add styles from famous paintings to any photo in a fraction of a second! [You ca
 
 Our implementation is based off of a combination of Gatys' [A Neural Algorithm of Artistic Style](https://arxiv.org/abs/1508.06576), Johnson's [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](http://cs.stanford.edu/people/jcjohns/eccv16/), and Ulyanov's [Instance Normalization](https://arxiv.org/abs/1607.08022). 
 
+https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave1.jpg
+
+##网络结构
+[](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/net.jpg)
 ## 风格转换结果(时间压缩版本)
-<table>
-    <tr>
-        <th>
-				wave.png
-        </th>
-        <td rowspan="2"><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave.jpg" width=100% height=100%></td>
-    </tr>
-    <tr>
-       <td rowspan="2"><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave1.jpg" width=20% height=20%></td>
-    </tr>
-</table>
+<p align='center'>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave1.jpg' height='200' width='300'/>
+</p>
+<p align='center'>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave1.jpg' height='200' width='300'/>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave.jpg' height='200' width='300'/>
+</p>
+
+<p align='center'>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/mountains1.jpg' height='200' width='300'/>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/mountains.jpg' height='200' width='300'/>
+</p>
+
+<p align='center'>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/la_muse1.jpg' height='200' width='300'/>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/la_muse.jpg' height='200' width='300'/>
+</p>
 
 
+<p align='center'>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/star1.jpg' height='200' width='300'/>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/star.jpg' height='200' width='300'/>
+</p>
+
+<p align='center'>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/strange1.jpg' height='200' width='300'/>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/strange.jpg' height='200' width='300'/>
+</p>
 
 
 
@@ -31,12 +50,8 @@ Our implementation is based off of a combination of Gatys' [A Neural Algorithm o
 0823_star_contentweight_15_relu4_2/1_500.png
 0823_strange_contentweight_100_relu3_3/1_10000.png
 0823_mountains_contentweight_25_relu4_2/0_9500.png
-## 预处理验证:
-(1) VGG: 零均值 + 归一化, 在ImageNet上效果较好。
-![VggNet](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg1.png)
 
-(2) ResNet:减mean_file,不用scale,(归一化则分类错误)分类结果比VGG要好。
-![ResNet](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet1.png)
+
 
 ## 最终效果比对
 最后200次迭代，同样大小的图片(224*224)
@@ -96,28 +111,28 @@ Our implementation is based off of a combination of Gatys' [A Neural Algorithm o
 <pre>
 git clone https://github.com/Maycbj/Share.git -b intern_sina`
 </pre>
+
 * 2、修改mac的ip地址 
 <pre>
-cd Share/internship/sina/Realtime_MultiPerson_Pose_Estimation/trans
-vim receive.py 
-address = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)
+cd Share/fast_style_transfer/code
+vim src/receive.py 
+address = ('10.236.10.44', 8003) ＝>  address = ('mac.de.i.p', 8003)
 </pre>
-
 
 * 3、登陆远程服务器：
 <pre>
 ssh root@10.85.125.105
-cd /disk/data0/users/mayuchen/Project/Realtime_Multi-Person_Pose_Estimation/testing/python
-vim server.py 
-address_s = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)
+cd /home/yuchen/Project/fast-style-transfer
+vim evaluate_server.py 
+address_s = ('10.236.10.44', 8003)＝>  address = ('mac.de.i.p', 8003)
 </pre>
 
 * 4、运行程序
 <pre>
-//本机上运行
-sh run.sh
+//mac上运行
+sh creat_connect.sh
 //立即在linux上运行
-python server.py v
+python evaluate_server.py 
 </pre>
 
 

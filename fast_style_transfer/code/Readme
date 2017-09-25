@@ -1,0 +1,39 @@
+/*******************
+ * 1、修改mac的ip地址  
+ ********************/
+vim src/receive.py 
+address = ('10.236.10.44', 8003) ＝>  address = ('mac.de.i.p', 8003)
+
+
+/*******************
+ * 2、登陆远程服务器： 
+ ********************/
+ssh root@10.85.125.105     密码 : dfKFuAJS    
+cd /home/yuchen/Project/fast-style-transfer
+vim evaluate_server.py 
+address_s = ('10.236.10.44', 8003)＝>  address = ('mac.de.i.p', 8003)
+
+
+/*******************
+ * 3、运行程序
+ ********************/
+//mac上运行
+sh creat_connect.sh
+//立即在linux上运行
+python evaluate_server.py 
+
+
+
+
+
+
+
+QA:
+1、Address already in use. 
+	mac上8003端口被占用，  lsof -i tcp:8002 ; kill [PID] 
+
+
+
+
+
+

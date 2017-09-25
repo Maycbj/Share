@@ -223,9 +223,10 @@ We present a bottom-up approach for multi-person pose estimation, without using 
 <pre>
 git clone https://github.com/Maycbj/Share.git -b intern_sina`
 </pre>
+
 * 2、修改mac的ip地址 
 <pre>
-cd Share/internship/sina/Realtime_MultiPerson_Pose_Estimation/trans
+cd Share/Realtime_MultiPerson_Pose_Estimation/trans
 vim receive.py 
 address = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)
 </pre>
