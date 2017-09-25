@@ -1,5 +1,16 @@
 # Realtime MultiPerson Pose Estimation
 
+## 项目地址
+[论文地址](https://arxiv.org/abs/1611.08050)
+[代码地址](https://github.com/ZheC/Realtime_Multi-Person_Pose_Estimation)
+
+## 项目介绍
+Code repo for winning 2016 MSCOCO Keypoints Challenge, 2016 ECCV Best Demo Award, and 2017 CVPR Oral paper.  
+
+Watch our video result in [YouTube](https://www.youtube.com/watch?v=pW6nZXeWlGM&t=77s) or [our website](http://posefs1.perception.cs.cmu.edu/Users/ZheCao/humanpose.mp4). 
+
+We present a bottom-up approach for multi-person pose estimation, without using any person detector. For more details, refer to our [CVPR'17 paper](https://arxiv.org/abs/1611.08050) or our [presentation slides](http://image-net.org/challenges/talks/2016/Multi-person%20pose%20estimation-CMU.pdf) at ILSVRC and COCO workshop 2016.
+
 ## 模型参数
 <table>
     <tr>
@@ -134,25 +145,25 @@
 <table>
     <tr>
         <th>VggNet(baseline)</th>
-        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg.png" width=100% height=100%></td>
+        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/vgg.png" width=100% height=50%></td>
     </tr>
     <tr>
         <th>MobileNet </th>
-        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile.png" width=100% height=100%></td>
+        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/mobile.png" width=100% height=50%></td>
     </tr>
     <tr>
         <th>ResNet</th>
-        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet.png" width=100% height=100%></td>
+        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/resnet.png" width=100% height=50%></td>
     </tr>
 </table>
 
 
 ## 预处理验证:
 (1) VGG: 零均值 + 归一化, 在ImageNet上效果较好。
-![VggNet](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg1.png)
+![VggNet](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/vgg1.png)
 
 (2) ResNet:减mean_file,不用scale,(归一化则分类错误)分类结果比VGG要好。
-![ResNet](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet1.png)
+![ResNet](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/resnet1.png)
 
 ## 最终效果比对
 最后200次迭代，同样大小的图片(224*224)
@@ -191,49 +202,49 @@
     <th>ResNet</th>
 </tr>
 <tr>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg2.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile2.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet2.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/vgg2.png" width=100% height=70%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/mobile2.png" width=100% height=70%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/resnet2.png" width=100% height=70%></td>
 </tr>
 <tr>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg3.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile3.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet3.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/vgg3.png" width=100% height=70%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/mobile3.png" width=100% height=70%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/resnet3.png" width=100% height=70%></td>
 </tr>
 <tr>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg4.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile4.png" width=100% height=100%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet4.png" width=100% height=100%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/vgg4.png" width=100% height=70%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/mobile4.png" width=100% height=70%></td>
+    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/images/resnet4.png" width=100% height=70%></td>
 </tr>
 </table>
 
 ##摄像头远程连接使用
 * 1、获取远程连接代码
-
- `git clone https://github.com/Maycbj/Share.git -b intern_sina`
- 
+<pre>
+git clone https://github.com/Maycbj/Share.git -b intern_sina`
+</pre>
 * 2、修改mac的ip地址 
 <pre>
-    `cd Share/internship/sina/Realtime_MultiPerson_Pose_Estimation/trans
-    vim receive.py 
-    address = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)`
+cd Share/internship/sina/Realtime_MultiPerson_Pose_Estimation/trans
+vim receive.py 
+address = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)
 </pre>
 
 
 * 3、登陆远程服务器：
 <pre>
-`ssh root@10.85.125.105
+ssh root@10.85.125.105
 cd /disk/data0/users/mayuchen/Project/Realtime_Multi-Person_Pose_Estimation/testing/python
 vim server.py 
-address_s = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)`
+address_s = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)
 </pre>
 
 * 4、运行程序
 <pre>
-`//本机上运行
+//本机上运行
 sh run.sh
 //立即在linux上运行
-python server.py v` 
+python server.py v
 </pre>
 
 
