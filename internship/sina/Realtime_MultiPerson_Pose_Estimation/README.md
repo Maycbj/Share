@@ -207,4 +207,52 @@
 </tr>
 </table>
 
+##远程连接使用
+* 1、获取远程连接代码
+ ` git clone `
+* 1、修改mac的ip地址 
+<pre>
+	`vim src/receive.py 
+	address = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)`
+</pre>
+
+
+* 2、登陆远程服务器：
+<pre>
+`ssh root@10.85.125.105
+cd /disk/data0/users/mayuchen/Project/Realtime_Multi-Person_Pose_Estimation/testing/python
+vim evaluate_server.py 
+address_s = ('10.236.10.44', 8003) -->  address = ('mac.de.i.p', 8003)`
+</pre>
+
+* 3、运行程序
+<pre>
+`//本机上运行
+sh creat_connect.sh
+//立即在linux上运行
+python evaluate_server.py` 
+</pre>
+
+
+
+
+
+
+
+
+QA:
+1、Address already in use. 
+	mac上8003端口被占用，  lsof -i tcp:8002 ; kill [PID] 
+	
+	
+	
+	
+	<p>这是一个普   通段
+	
+	落：</p>
+
+<pre><code>这是一个代
+
+码区块。</code></pre>
+
 
