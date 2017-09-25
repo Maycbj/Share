@@ -12,10 +12,23 @@ Our implementation is based off of a combination of Gatys' [A Neural Algorithm o
 https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave1.jpg
 
 ##网络结构
-[](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/net.jpg)
+![net](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/net.jpg)
+
+* 项目分为两个网络结构，分为图片转换模块和特征提取模块。
+ * 图片转换模块：输入图片(内容图片)先用多个卷积层提取高维特征，再通过残差网络对高维特征进行转换，再反卷积为低维特征。(ImageTransformNet)
+ * 特征提取模块：将转换后图片、风格图片、内容图片都通过Vgg,提取高维特征，同时对转换后图片相关矩阵和风格图片相关矩阵做loss,对转换后图片相关矩阵和内容图片像素级做loss。一般来说，层级越高，表示就越抽象。
+(LossNet)
+* 由大量实验发现
+ * 风格重建：越用高层的特征，风格重建的就越粗粒度化。
+ * 内容重建：越是底层的特征，重建的效果就越精细，越不容易变形。
+![net](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/net.jpg)
+
+* 由于是提升预测部分的计算性能，压缩计算时间，所以只要压缩imageTransformNet部分的网络结构，而不用关心Vgg的耗时。
+* 本项目对VGG-16没有压缩，对
+
 ## 风格转换结果(时间压缩版本)
 <p align='center'>
-  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave1.jpg' height='200' width='300'/>
+  <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/stata.jpg' height='200' width='300'/>
 </p>
 <p align='center'>
   <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave1.jpg' height='200' width='300'/>
