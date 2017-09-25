@@ -9,29 +9,30 @@ Add styles from famous paintings to any photo in a fraction of a second! [You ca
 
 Our implementation is based off of a combination of Gatys' [A Neural Algorithm of Artistic Style](https://arxiv.org/abs/1508.06576), Johnson's [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](http://cs.stanford.edu/people/jcjohns/eccv16/), and Ulyanov's [Instance Normalization](https://arxiv.org/abs/1607.08022). 
 
-
-## fine-tuning模型链接:
-* VGG19:    [https://gist.github.com/ksimonyan/3785162f95cd2d5fee77](https://gist.github.com/ksimonyan/3785162f95cd2d5fee77)
-* MobileNet:    [https://github.com/shicai/MobileNet-Caffe](https://github.com/shicai/MobileNet-Caffe)
-* ResNet:   [https://github.com/KaimingHe/deep-residual-networks](https://github.com/KaimingHe/deep-residual-networks)
-
-## 学习曲线比对(前65000次迭代)
+## 风格转换结果(时间压缩版本)
 <table>
     <tr>
-        <th>VggNet(baseline)</th>
-        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg.png" width=100% height=50%></td>
+        <th>
+				wave.png
+        </th>
+        <td rowspan="2"><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/wave.png" width=100% height=100%></td>
     </tr>
     <tr>
-        <th>MobileNet </th>
-        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile.png" width=100% height=50%></td>
-    </tr>
-    <tr>
-        <th>ResNet</th>
-        <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet.png" width=100% height=50%></td>
+        <th>
+				
+        </th>
     </tr>
 </table>
 
 
+
+
+
+0823_wave_contentweight_15_relu4_2/1_1500.png
+0823_la_muse_contentweight_25_relu4_2/0_10000.png
+0823_star_contentweight_15_relu4_2/1_500.png
+0823_strange_contentweight_100_relu3_3/1_10000.png
+0823_mountains_contentweight_25_relu4_2/0_9500.png
 ## 预处理验证:
 (1) VGG: 零均值 + 归一化, 在ImageNet上效果较好。
 ![VggNet](https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg1.png)
