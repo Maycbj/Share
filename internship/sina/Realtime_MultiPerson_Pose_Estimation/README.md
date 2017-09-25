@@ -1,6 +1,6 @@
-#Realtime MultiPerson Pose Estimation
+# Realtime MultiPerson Pose Estimation
 
-##模型参数
+## 模型参数
 <table>
     <tr>
         <th>模型</th>
@@ -125,12 +125,12 @@
 </tr>
 </table>
 
-##fine-tuning模型链接:
+## fine-tuning模型链接:
 * VGG19:    [https://gist.github.com/ksimonyan/3785162f95cd2d5fee77](https://gist.github.com/ksimonyan/3785162f95cd2d5fee77)
 * MobileNet:    [https://github.com/shicai/MobileNet-Caffe](https://github.com/shicai/MobileNet-Caffe)
 * ResNet:   [https://github.com/KaimingHe/deep-residual-networks](https://github.com/KaimingHe/deep-residual-networks)
 
-##学习曲线比对(前65000次迭代)
+## 学习曲线比对(前65000次迭代)
 <table>
     <tr>
         <th>VggNet(baseline)</th>
@@ -147,14 +147,14 @@
 </table>
 
 
-##预处理验证:
+## 预处理验证:
 (1) VGG: 零均值 + 归一化, 在ImageNet上效果较好。
 ![VggNet](https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/vgg1.png)
 
 (2) ResNet:减mean_file,不用scale,(归一化则分类错误)分类结果比VGG要好。
 ![ResNet](https://raw.githubusercontent.com/Maycbj/SharePictures/master/internship/sina/Realtime_MultiPerson_Pose_Estimation/resnet1.png)
 
-##最终效果比对
+## 最终效果比对
 最后200次迭代，同样大小的图片(224*224)
 
 * Loss及耗时比对
