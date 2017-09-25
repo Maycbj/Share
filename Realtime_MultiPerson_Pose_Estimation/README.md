@@ -210,7 +210,7 @@
 ##摄像头远程连接使用
 * 1、获取远程连接代码
 
- ` git clone https://github.com/Maycbj/Share.git`
+ `git clone https://github.com/Maycbj/Share.git -b intern_sina`
  
 * 2、修改mac的ip地址 
 <pre>
@@ -241,21 +241,5 @@ python server.py v`
 
 
 
-
-
-QA:
-1、Address already in use. 
-	mac上8003端口被占用，  lsof -i tcp:8002 ; kill [PID] 
-	
-	
-	
-	
-	<p>这是一个普   通段
-	
-	落：</p>
-
-<pre><code>这是一个代
-
-码区块。</code></pre>
 
 
