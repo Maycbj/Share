@@ -1,4 +1,4 @@
-# fast-style-transfer
+# Sex_Identification
 
 ## 项目介绍
 由于图像分类是图像处理领域中一大的研究方向，imagenet中都会涌现出大量优秀的模型，故踩在巨人的肩膀上，借用imagenet中优秀的模型，可以较容易的对图像进行分类。
@@ -11,15 +11,18 @@
 * 数据增强，翻转，随机裁剪。
 
 ##模型调参
-* 由于GPU紧张，故开始只用了一张卡的一半内存，batchsize=16定的较小，训练出现了震荡，收敛比较慢，后来为了不占用过多内存，batchsize仍保持不变，12个batchsize的loss平均，更新模型，即itersize=12。虽然迭代次数变小了，但训练总时间缩短了。
+* 由于GPU紧张，故开始只用了一张卡的一半内存，batchsize=16定的较小，训练出现了震荡，收敛比较慢，后来为了不占用过多内存，batchsize仍保持不变，12个batchsize的loss平均更新模型，即itersize=12。虽然迭代次数变小了(只迭代了1w次)，但训练总时间缩短了。
 * 观察训练集和测试集loss曲线，测试集loss略低于训练集，没有出现明显的过拟合情况，故没有加入Dropout层。
 * 未来可以加入Dropout防止过拟合，加入BatchNorm加速收敛。
 * 提升模型准确率的方向：
  * 加大网络深度，同时也要保证数据集能cover的了模型复杂度。
- * 使用ResNet系，ImageNet2017冠军 [SENet](https://github.com/hujie-frank/SENet)，显式地建模特征通道之间的相互依赖关系,对特征重标定。
+ * 使用ResNet系，ImageNet2017冠军 [SENet](https://github.com/hujie-frank/SENet)，显式地建模特征通道之间的相互依赖关系。
  * 超参数的调整等。
  
+<p align='center'><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Sex_Identification/images/loss.jpg" width=500 height=300 align="center"></p>
+
 ##预测结果
+<p align='center'>
 <table>
     <tr>
         <th></th>
@@ -34,38 +37,35 @@
         <td>0.94</td>
     </tr>
 </table>
+</p>
 
-##摄像头远程连接使用
-* 1、获取远程连接代码
-<pre>
-git clone https://github.com/Maycbj/Share.git -b intern_sina`
-</pre>
+##模型使用
 
-* 2、修改mac的ip地址 
-<pre>
-cd Share/fast_style_transfer/code
-vim src/receive.py 
-address = ('10.236.10.44', 8003) ＝>  address = ('mac.de.i.p', 8003)
-</pre>
+	python ./classify_resnet.py \
+		--pretrained_prototxt model/resnet50_cvgj_deploy.prototxt \
+		--pretrained_model model/resnet50_iter_10000.caffemodel \
+		--input_file final_data_resize/tag/val.txt
+	
+	
+`--pretrained_prototxt`:模型的结构的路径
 
-* 3、登陆远程服务器：
-<pre>
-ssh root@10.85.125.105
-cd /home/yuchen/Project/fast-style-transfer
-vim evaluate_server.py 
-address_s = ('10.236.10.44', 8003)＝>  address = ('mac.de.i.p', 8003)
-</pre>
+`--pretrained_model`:模型训练好的模型的路径
 
-* 4、运行程序
-<pre>
-//mac上运行
-sh creat_connect.sh
-//立即在linux上运行
-python evaluate_server.py 
-</pre>
+`--input_file`:测试图片的地址文件，包括文件路径和真实的label
 
+最终输出在该测试集上预测的准确率。
 
+输出结果
 
+	                   File_path				         | True label |Predict label|    Score
+	                   						...
+	selfie_handsome_005ILOTely1fjbd4o0wu2j30ku112add.jpg |          8 |           8 |    7.32968
+	           girl_005FbHZmly1fjfwjg7c1rj30m80m8wmu.jpg |          6 |           6 |    10.7992
+	    sexy_beauty_a3ae3f61ly1fjbrq7m4xoj20cs0cs401.jpg |          9 |           9 |     9.1538
+	            boy_005KOqgSly1fjerbbaz23j30qo1417lc.jpg |          3 |           3 |    7.64662
+	            cat_6f05b989ly1fjehx2ojfaj20qo1bf4a7.jpg |          4 |           4 |    11.4872
+	            dog_62daab0dgy1fjb1y4o86kj21lg1lgtrs.jpg |          5 |           5 |    11.1144
+	The accuracy of 1000 pictures is 0.945 (945/1000)
 
 
 
