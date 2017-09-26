@@ -141,6 +141,11 @@ We present a bottom-up approach for multi-person pose estimation, without using 
 * MobileNet:    [https://github.com/shicai/MobileNet-Caffe](https://github.com/shicai/MobileNet-Caffe)
 * ResNet:   [https://github.com/KaimingHe/deep-residual-networks](https://github.com/KaimingHe/deep-residual-networks)
 
+## 模型可视化:
+* [VGG19](http://ethereon.github.io/netscope/#/gist/e2a91691f79bc8830a84de24f6d68155)   
+* [MobileNet](http://ethereon.github.io/netscope/#/gist/d56116c37c78950b8b84fd937c1a052b)  
+* [ResNet](http://ethereon.github.io/netscope/#/gist/41714c30513568c15e6641acb7c0ba12) 
+
 ## 学习曲线比对(前65000次迭代)
 <table>
     <tr>

@@ -2,62 +2,37 @@
 
 ## 项目介绍
 由于图像分类是图像处理领域中一大的研究方向，imagenet中都会涌现出大量优秀的模型，故踩在巨人的肩膀上，借用imagenet中优秀的模型，可以较容易的对图像进行分类。
+项目对线上图片进行分类，共有9个类，主要以人像为主。
 
-##网络结构
+##网络结构设计
+* 谈不上设计了，就是最基础的ResNet-50,网络模型  [可视化](http://ethereon.github.io/netscope/#/gist/6c1cb523a01d8f81a2387c132c08fa6d)  
+* 数据集共40W张图片，训练测试集比例4:1，输入图像大小不定，且包含部分脏数据，过滤掉大小小于5KB的图片，将图像最短边缩放至256，中心裁剪得到(256*256)的图像。
+* 由于fine-tuning的ResNet的边长为224，在训练集上随机裁剪(224*224)的图像，测试集上中心裁剪(224＊224)。
+* 数据增强，翻转，随机裁剪。
 
-
-
-## 最终效果比对
-最后200次迭代，同样大小的图片(224*224)
-
-* Loss及耗时比对
+##模型调参
+* 由于GPU紧张，故开始只用了一张卡的一半内存，batchsize=16定的较小，训练出现了震荡，收敛比较慢，后来为了不占用过多内存，batchsize仍保持不变，12个batchsize的loss平均，更新模型，即itersize=12。虽然迭代次数变小了，但训练总时间缩短了。
+* 观察训练集和测试集loss曲线，测试集loss略低于训练集，没有出现明显的过拟合情况，故没有加入Dropout层。
+* 未来可以加入Dropout防止过拟合，加入BatchNorm加速收敛。
+* 提升模型准确率的方向：
+ * 加大网络深度，同时也要保证数据集能cover的了模型复杂度。
+ * 使用ResNet系，ImageNet2017冠军 [SENet](https://github.com/hujie-frank/SENet)，显式地建模特征通道之间的相互依赖关系,对特征重标定。
+ * 超参数的调整等。
+ 
+##预测结果
 <table>
     <tr>
         <th></th>
-        <th>loss</th>
-        <th>耗时(前向传播时间)</th>
+        <th>training set</th>
+        <th>validation set</th>
+        <th>testing set</th>
     </tr>
     <tr>
-        <th>VGG19</th>
-        <td>183</td>
-        <td>26ms</td>
+        <th>accuracy</th>
+        <td>0.97</td>
+        <td>0.95</td>
+        <td>0.94</td>
     </tr>
-        <th>MobileNet</th>
-        <td>199</td>
-        <td>16ms</td>
-    </tr>
-        <th>ResNet</th>
-        <td>182</td>
-        <td>21ms</td>
-    </tr>
-    </tr>
-        <th>最终优化ResNet</th>
-        <td>182</td>
-        <td>17ms</td>
-    </tr>
-</table>
-* 结果图比对
-<table>
-  <tr>
-    <th>ModelName</th>
-    <th>StyleImage</th>
-    <th>ResultImage</th>
-</tr>
-<tr>
-    <td>wave</td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile2.png" width=100% height=70%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet2.png" width=100% height=70%></td>
-</tr>
-<tr>
-    <td>mountains</td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile3.png" width=100% height=70%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet3.png" width=100% height=70%></td>
-</tr>
-<tr>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/vgg4.png" width=100% height=70%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/mobile4.png" width=100% height=70%></td>
-    <td><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Realtime_MultiPerson_Pose_Estimation/resnet4.png" width=100% height=70%></td>
-</tr>
 </table>
 
 ##摄像头远程连接使用

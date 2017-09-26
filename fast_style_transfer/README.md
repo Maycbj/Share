@@ -33,17 +33,11 @@ https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/i
 
 * 本项目对VGG-16没有压缩，对ImageTransformNet进行压缩，缩小卷积核、减小特征图的通道数、减小层数等方式。
 
-0823_wave_contentweight_15_relu4_2/1_1500.png
-0823_la_muse_contentweight_25_relu4_2/0_10000.png
-0823_star_contentweight_15_relu4_2/1_500.png
-0823_strange_contentweight_100_relu3_3/1_10000.png
-0823_mountains_contentweight_25_relu4_2/0_9500.png
-
 
 ##Trainging
 使用`style.py`训练模型。用单块M40上训练4小时左右，具体的字段解释请[单击这](https://github.com/lengstrom/fast-style-transfer/blob/master/docs.md#style)。
 
-python style.py --style examples/style/wave.jpg \
+	python style.py --style examples/style/wave.jpg \
 	  --checkpoint-dir model/snapshot/wave/ \
 	  --test examples/content/stata.jpg \
 	  --test-dir output/train_res/${NAME}/ \
@@ -55,14 +49,16 @@ python style.py --style examples/style/wave.jpg \
 	  	  
 ##Testing
 使用`evaluate.py`可以测试该模型。
-python evaluate.py --checkpoint model/final_model/$1/fns.ckpt \
-  --in-path examples/single_content/ \
-  --out-path output/single_content/ \
-  --batch-size 1 \
-  --allow-different-dimensions
+	
+	python evaluate.py \
+	  --checkpoint model/final_model/wave/fns.ckpt \
+	  --in-path examples/single_content/ \
+	  --out-path output/single_content/ \
+	  --batch-size 1 \
+	  --allow-different-dimensions
   
 ## 风格转换结果(时间压缩版本)
-<!--<p align='center'>
+<p align='center'>
   <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/stata.jpg' height='200' width='300'/>
 </p>
 <p align='center'>
@@ -91,9 +87,10 @@ python evaluate.py --checkpoint model/final_model/$1/fns.ckpt \
   <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/strange.jpg' height='200' width='300'/>
 </p>
 
--->
 
-[模型下载]()
+
+[模型下载](https://github.com/Maycbj/Share/tree/intern_sina/fast_style_transfer/code/final_model)
+
 ## 最终效果比对
 * Loss及耗时比对
 <table>
@@ -128,7 +125,7 @@ git clone https://github.com/Maycbj/Share.git -b intern_sina`
 
 * 2、修改mac的ip地址 
 <pre>
-cd Share/fast_style_transfer/code
+cd Share/fast_style_transfer/code/socket
 vim src/receive.py 
 address = ('10.236.10.44', 8003) ＝>  address = ('mac.de.i.p', 8003)
 </pre>
