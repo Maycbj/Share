@@ -37,6 +37,8 @@ https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/i
 ##Trainging
 使用`style.py`训练模型。用单块M40上训练4小时左右，具体的字段解释请[单击这](https://github.com/lengstrom/fast-style-transfer/blob/master/docs.md#style)。
 
+	ssh root@10.85.125.105
+	cd /home/yuchen/Project/fast-style-transfer
 	python style.py --style examples/style/wave.jpg \
 	  --checkpoint-dir model/snapshot/wave/ \
 	  --test examples/content/stata.jpg \
@@ -57,6 +59,35 @@ https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/i
 	  --batch-size 1 \
 	  --allow-different-dimensions
   
+## 模型改变
+
+由于只有ImageTransformNet模块对预测时间有影响，故重点压缩ImageTransformNet的网络结构。
+
+* 原始模型：3个卷积层，5个residual_block,再接3个反卷积层。
+* 修改模型：2个卷积层，1个residual_block,再接2个反卷积层。层数减小，每层
+卷积核大小减小，通道数减小。
+
+
+<center>
+
+| 原始模型 (通道数，卷积核大小)  | 压缩模型       | 
+| ------------- |:-------------:|
+| conv (32, 9)  | conv (16, 3)  | 
+| conv (64, 3)  | conv (32, 3)  | 
+| conv (128, 3)  |  | 
+| res_block (128, 3)  | res_block (32, 3)  | 
+| res_block (128, 3)  |  | 
+| res_block (128, 3)  |  | 
+| res_block (128, 3)  |  | 
+| res_block (128, 3)  |  | 
+| conv (64, 3)  | conv (32, 3)  | 
+| conv (32, 3)  | conv (16, 3)  | 
+| conv (3, 9)  | conv (3, 3)  | 
+
+</center>
+
+
+
 ## 风格转换结果(时间压缩版本)
 <p align='center'>
   <img src='https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/images/stata.jpg' height='200' width='300'/>
@@ -93,6 +124,7 @@ https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/i
 
 ## 最终效果比对
 * Loss及耗时比对
+<center>
 <table>
     <tr>
         <th></th>
@@ -115,6 +147,7 @@ https://raw.githubusercontent.com/Maycbj/Share/intern_sina/fast_style_transfer/i
         <td>1.8%</td>
     </tr>
 </table>
+</center>
 
 
 ##摄像头远程连接使用

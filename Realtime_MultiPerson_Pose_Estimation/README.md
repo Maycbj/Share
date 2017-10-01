@@ -141,6 +141,13 @@ We present a bottom-up approach for multi-person pose estimation, without using 
 * MobileNet:    [https://github.com/shicai/MobileNet-Caffe](https://github.com/shicai/MobileNet-Caffe)
 * ResNet:   [https://github.com/KaimingHe/deep-residual-networks](https://github.com/KaimingHe/deep-residual-networks)
 
+## 模型结构
+![model](https://github.com/ZheC/Multi-Person-Pose-Estimation/raw/master/readme/arch.png)
+
+## 模型修改:
+* 使用ResNet-50的前7个block替换Vgg-19，并用ResNet在imagenet上训练好的模型fine－tuning模型。
+* 上图中，原始模型有6次修正(stage2～7)，现缩减至1次。
+
 ## 模型可视化:
 * [VGG19](http://ethereon.github.io/netscope/#/gist/e2a91691f79bc8830a84de24f6d68155)   
 * [MobileNet](http://ethereon.github.io/netscope/#/gist/d56116c37c78950b8b84fd937c1a052b)  
@@ -223,7 +230,26 @@ We present a bottom-up approach for multi-person pose estimation, without using 
 </tr>
 </table>
 
-##摄像头远程连接使用
+## Training
+1. `cd /home/yuchen/Project/Realtime_Multi-Person_Pose_Estimation/training`
+	
+2. `sh train.sh r`   #测试ResNet
+ 
+   `sh train.sh v`   #测试VggNet
+   
+   `sh train.sh m`   #测试MobileNet
+
+
+## Testing
+1. `cd /home/yuchen/Project/Realtime_Multi-Person_Pose_Estimation/testing/python`
+
+2. `python model.py r`   #测试ResNet
+ 
+   `python model.py v`   #测试VggNet
+   
+   `python model.py m`   #测试MobileNet
+	
+## 摄像头远程连接使用
 * 1、获取远程连接代码
 <pre>
 git clone https://github.com/Maycbj/Share.git -b intern_sina`

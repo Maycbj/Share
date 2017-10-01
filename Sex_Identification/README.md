@@ -4,6 +4,16 @@
 由于图像分类是图像处理领域中一大的研究方向，imagenet中都会涌现出大量优秀的模型，故踩在巨人的肩膀上，借用imagenet中优秀的模型，可以较容易的对图像进行分类。
 项目对线上图片进行分类，共有9个类，主要以人像为主。
 
+##数据采集使用
+实时爬取线上的图片数据，图片共分为9类，数据采集路径`/data0/users/mayuchen/Project/GrabPic`
+
+1. 先通过Kafka获得图片pid和分类，共有四个通道(四个ip地址)，但观察发现四个通道的图片信息格式基本相似。
+2. 使用`consumer.py`对Kafka队列的数据实时采集，平均每秒大约2张图片的信息。爬去得到图片的pid和类别信息，以存放在对应日期下的`info`文件夹下。
+3. 使用`get_img.py`对读取前一天采集到的图片pid信息获取图片，并放到对应日期下的`img`文件夹下。
+
+使用`run_all.sh`可以一键式启动数据采集，每天0点会自动关闭consumer，同时重启一个新的consumer获取数据，同时对前一天的图片`get_img`获取图片。
+
+
 ##网络结构设计
 * 谈不上设计了，就是最基础的ResNet-50,网络模型  [可视化](http://ethereon.github.io/netscope/#/gist/6c1cb523a01d8f81a2387c132c08fa6d)  
 * 数据集共40W张图片，训练测试集比例4:1，输入图像大小不定，且包含部分脏数据，过滤掉大小小于5KB的图片，将图像最短边缩放至256，中心裁剪得到(256*256)的图像。
@@ -21,7 +31,10 @@
  
 <p align='center'><img src="https://raw.githubusercontent.com/Maycbj/Share/intern_sina/Sex_Identification/images/loss.jpg" width=500 height=300 align="center"></p>
 
-##预测结果
+## 模型修改
+将原始的ResNet-50最后一层的全连接层输出类别个数改为10类。
+
+## 预测结果
 <p align='center'>
 <table>
     <tr>
@@ -39,11 +52,19 @@
 </table>
 </p>
 
-##模型使用
+## Training
+	1. ssh root@10.85.125.105
+	2. cd /home/yuchen/Project/nsfw
+	3. caffe/build/tools/caffe train \
+		--solver=model/resnet50_cvgj_solver.prototxt  \
+		--gpu=0 \
+		--weights=snapshot/resnet50_cvgj_20170917/resnet50_cvgj_iter_2000.caffemodel
 
-	python ./classify_resnet.py \
+## Testing
+	1. cd /home/yuchen/Project/nsfw
+	2. python ./classify_resnet.py \
 		--pretrained_prototxt model/resnet50_cvgj_deploy.prototxt \
-		--pretrained_model model/resnet50_iter_10000.caffemodel \
+		--pretrained_model snapshot/resnet50_cvgj_20170918_poly/resnet50_cvgj_iter_10000.caffemodel \
 		--input_file final_data_resize/tag/val.txt
 	
 	
@@ -55,7 +76,7 @@
 
 最终输出在该测试集上预测的准确率。
 
-输出结果
+#### 输出结果
 
 	                   File_path				         | True label |Predict label|    Score
 	                   						...
